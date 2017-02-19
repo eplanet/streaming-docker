@@ -15,4 +15,6 @@ RUN ln -s /opt/zookeeper-3.4.9 /opt/zookeeper
 COPY kafka_2.11-0.10.1.1.tgz /opt
 RUN cd /opt && tar zxf kafka_2.11-0.10.1.1.tgz
 RUN ln -s /opt/kafka_2.11-0.10.1.1 /opt/kafka
+RUN sed -i 's/#advertised/advertised/g' /opt/kafka/config/server.properties
+RUN sed -i 's/your.host.name/localhost/g' /opt/kafka/config/server.properties
 COPY bashrc /root/.bashrc
